@@ -8,8 +8,9 @@ class Mascota {
   }
 }
 const Zaphi = new Mascota("Zaphi", 1, "F", "Perro", 1);
-const DonGato = new Mascota("DonGato", 3, "M", "Gato", 2);
-const enGuarderia = [Zaphi, DonGato];
+const DonGato = new Mascota("Don Gato", 3, "M", "Gato", 2);
+const Pajaro = new Mascota("Piolin", 20, "M", "Canario", 3);
+const enGuarderia = [Zaphi, DonGato, Pajaro];
 
 function mostrarGuarderia() {
   const guarderia = document.getElementById("guarderia");
