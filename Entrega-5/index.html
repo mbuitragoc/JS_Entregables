@@ -10,6 +10,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Dogtora Kathe - Guarderia</title>
   </head>
   <body>
@@ -24,7 +25,33 @@
       <h3>EN LA GUARDERIA:</h3>
       <div id="guarderia" class="row m-3"></div>
       <h3>Agregar o Retirar mascota</h3>
-      
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Nombre</span>
+        <input type="text" id="nombre" class="form-control field" />
+        <span class="input-group-text">Edad</span>
+        <input type="number" id="edad" min="1" class="form-control field" />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Genero</span>
+        <select id="genero" class="form-select">
+          <option value="F">Hembra</option>
+          <option value="M">Macho</option>
+        </select>
+        <span class="input-group-text">Especie</span>
+        <select id="especie" class="form-select">
+          <option value="Perro">Perro</option>
+          <option value="Gato">Gato</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <div id="button_types" class="col-sm-12">
+        <a id="agregar" class="btn bg-success text-bg-danger">Ingresar</a>
+        <a id="eliminar" class="btn bg-danger text-bg-dark">Retirar</a>
+      </div>
+      <div id="mensaje"></div>
     </main>
     <script src="./js/main.js"></script>
     <script
