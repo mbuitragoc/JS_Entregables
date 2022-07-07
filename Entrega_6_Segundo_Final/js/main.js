@@ -67,10 +67,7 @@ document.getElementById("eliminar").addEventListener("click", function () {
   localStorage.setItem("datosGuarderia", JSON.stringify(listaGuarderia));
 });
 
-
-if (localStorage.getItem("datosGuarderia")) {
-  mostrarGuarderia();
-} else {
-  localStorage.setItem("datosGuarderia", JSON.stringify(datosGuarderia));
-  mostrarGuarderia();
-}
+localStorage.getItem("datosGuarderia")
+  ? mostrarGuarderia()
+  : (localStorage.setItem("datosGuarderia", JSON.stringify(datosGuarderia)),
+    mostrarGuarderia());
