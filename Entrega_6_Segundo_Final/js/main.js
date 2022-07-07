@@ -25,11 +25,13 @@ function mostrarGuarderia() {
     card.classList.add("col-3");
     card.classList.add("p-2");
 
-    mascota.especie == "Perro"
-      ? (especie = "perro")
-      : mascota.especie == "Gato"
-      ? (especie = "gato")
-      : (especie = "other");
+    if (mascota.especie == "Perro") {
+      especie = "perro";
+    } else if (mascota.especie == "Gato") {
+      especie = "gato";
+    } else {
+      especie = "other";
+    }
 
     card.innerHTML = `<img src="./icons/${especie}.jpg">
                       <h5 class="card-title pt-1"> ${mascota.id}. ${mascota.nombre}</h5>
@@ -67,7 +69,9 @@ document.getElementById("eliminar").addEventListener("click", function () {
   localStorage.setItem("datosGuarderia", JSON.stringify(listaGuarderia));
 });
 
-localStorage.getItem("datosGuarderia")
-  ? mostrarGuarderia()
-  : (localStorage.setItem("datosGuarderia", JSON.stringify(datosGuarderia)),
-    mostrarGuarderia());
+if (localStorage.getItem("datosGuarderia")) {
+  mostrarGuarderia();
+} else {
+  localStorage.setItem("datosGuarderia", JSON.stringify(datosGuarderia));
+  mostrarGuarderia();
+}
