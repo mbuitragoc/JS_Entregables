@@ -105,7 +105,7 @@ document.getElementById("eliminar").addEventListener("click", function () {
 
     listaGuarderia[indexRetiro].estadia = estadia;
 
-    // listaGuarderia.splice(indexRetiro, 1);
+    listaGuarderia.splice(indexRetiro, 1);
     document.getElementById(
       "mensaje"
     ).innerHTML = `<p>${nombre} fue retirada de la Guarderia</p>
