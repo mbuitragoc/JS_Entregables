@@ -11,6 +11,12 @@ class Mascota {
 }
 
 let listaGuarderia = JSON.parse(localStorage.getItem("datosGuarderia"));
+
+localStorage.getItem("datosGuarderia")
+  ? mostrarGuarderia()
+  : (localStorage.setItem("datosGuarderia", JSON.stringify(datosGuarderia)),
+    mostrarGuarderia());
+
 listaGuarderia.forEach((element) => {
   element.horaIngreso = DateTime.now();
 });
@@ -84,18 +90,28 @@ document.getElementById("eliminar").addEventListener("click", function () {
   );
 
   if (indexRetiro != -1) {
-    let horaRetiro = DateTime.now();
-    let estadia = horaRetiro.diff(
-      listaGuarderia[indexRetiro].horaIngreso
-    ).minutes;
+    let estadia = listaGuarderia[indexRetiro].horaIngreso
+      .diffNow()
+      .toObject().milliseconds;
 
-    console.log(estadia.minutes);
+    let estadiaMinutes = (estadia) => {
+      let millis = Math.abs(estadia);
+      let minutes = Math.floor(millis / 60000);
+      let seconds = ((millis % 60000) / 1000).toFixed(0);
+      return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    };
 
-    listaGuarderia.splice(indexRetiro, 1);
+    console.log("Interval", estadiaMinutes);
+
+    listaGuarderia[indexRetiro].estadia = estadia;
+
+    // listaGuarderia.splice(indexRetiro, 1);
     document.getElementById(
       "mensaje"
     ).innerHTML = `<p>${nombre} fue retirada de la Guarderia</p>
-                  <p> ${nombre} se quedo durante ${estadia} minutos`;
+                  <p> ${nombre} se quedo durante ${estadiaMinutes(
+      estadia
+    )} minutos`;
 
     Swal.fire({
       position: "top-end",
